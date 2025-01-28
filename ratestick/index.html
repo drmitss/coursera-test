@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ratestick Simulation Visualizations</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="plot_vod"></div><br><br><br><br>
+        <div id="plot_density"></div> <br><br><br><br>
+    <div id="plot_pressure"></div>
+    <script src="main.js"></script>
+</body>
+</html>
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ratestick Simulation Visualizations</title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .left-panel, .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .left-panel {
+            border-right: 2px solid #ccc;
+        }
+
+        .plot-container {
+            width: 90%;
+            height: 90%;
+        }
+
+        .dropdown {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Left panel for VoD plot -->
+    <div class="left-panel">
+        <div id="plot_vod" class="plot-container"></div>
+    </div>
+
+    <!-- Right panel for Density/Pressure plot selection -->
+    <div class="right-panel">
+        <select id="plot-selector" class="dropdown">
+            <option value="density">Density Plot</option>
+            <option value="pressure">Pressure Plot</option>
+        </select>
+        <div id="plot_density" class="plot-container"></div>
+        <div id="plot_pressure" class="plot-container" style="display: none;"></div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        // JavaScript to handle plot switching
+        document.getElementById('plot-selector').addEventListener('change', function() {
+            const selectedPlot = this.value;
+            if (selectedPlot === 'density') {
+                document.getElementById('plot_density').style.display = 'block';
+                document.getElementById('plot_pressure').style.display = 'none';
+            } else if (selectedPlot === 'pressure') {
+                document.getElementById('plot_density').style.display = 'none';
+                document.getElementById('plot_pressure').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
